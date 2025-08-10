@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=0.7" />
+    <!-- link for pixel fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
+
+    <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet" />
+    <style>
+      @import url("https://fonts.cdnfonts.com/css/public-pixel");
+    </style>
+
+    <title>about me</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <!-- OFFLINE STATUS STATE -->
+    <section id="shut-down-popup">
+      <div id="shutting-down-container" class="hidden">
+        <h1 class="boot-message">Wird heruntergefahren<span class="ellipsis-animation"></span></h1>
+      </div>
+      <div id="turning-on-container" class="hidden">
+       <h1 class="boot-message">Windows wird vorbereitet<span class="ellipsis-animation"></span></h1>
+      </div>
+      <div id="off-image" class="hidden">
+        <p class="status-text">[ SYSTEM STATUS: <b>OFFLINE</b> ]</p>
+        <input type="image" id="off-icon" src="https://i.imgur.com/piSqQUb.png" />
+        <div class="text-container">
+          <p class="status-text">> ENTER DRÜCKEN UM NEUZUSTARTEN</p> <input type="text" id="cursor" />
+        </div>
+      </div>
+    </section>
+    <section class="interface">
+      <!-- APPS ON DESKTOP -->
+      <div class="applications">
+        <div class="app-sprite envelope-icon" id="envelope"></div>
+        <div class="app-sprite sleep-mode-icon" id="sleep-exe"></div>
+        <div class="app-sprite trash-can-icon" id="trash-can"></div>
+        <!-- will add later 
+          <i class="sprite gaming-icon"></i>
+          <i class="sprite school-icon"></i> -->
+      </div>
+
+      <!-- ABOUT ME POPUP -->
+      <section id="aboutme-popup" class="hidden">
+        <img id="profile-picture" src="https://i.imgur.com/uhNpajM.png" />
+        <h1 class="name-and-level">shahd <strong>(˶ᵔ ᵕ ᵔ˶)</strong></h1>
+        <img id="figure-image" src="https://i.imgur.com/r722DwR.gif" />
+
+        <!-- INFO AND TURN OFF BUTTONS IN THE POPUP -->
+        <section class="actions">
+          <input type="image" class="system-buttons" id="info-button" src="https://i.imgur.com/pwCI2hE.png" />
+          <p class="actions-text">info</p>
+          <input type="image" class="system-buttons" id="power-off-button" src="https://i.imgur.com/JT3HEAa.png" />
+          <p class="actions-text">herunterfahren</p>
+        </section>
+
+        <!-- TEXT IN THE ABOUT ME -->
+
+        <ul class="info-list">
+          <li>15 J</li>
+          <li>gymnasiastin</li>
+          <li>10. klasse</li>
+          <li>sweaty gamerin</li>
+          <li>twitch enthusiastin</li>
+          <li>cola zero süchtig</li>
+          <li class="note">
+            schlafmangel<br />
+            (➢ mehr zeit fürs zocken 🤑)
+          </li>
+          <li style="list-style: none; margin: 10px;">träumt von game development ♥︎</li>
+        </ul>
+      </section>
+      <!-- shut down message -->
+      <section id="shut-down-message" class="hidden">
+        <h2 class="message-header"> </h2>
+        <input type="image" class="action-buttons" id="x-button-SD" src="https://i.imgur.com/exrXAGT.png" />
+        <!-- <p class="message-text">Möchten Sie wirklich herunterfahren? :(</p> -->
+        <p class="message-text"> </p>
+        <div class="button-container">
+          <input type="image" class="action-buttons" id="ja-button" src="https://i.imgur.com/MF1Z8KX.png" />
+          <input type="image" class="action-buttons" id="nein-button" src="https://i.imgur.com/6mtyv9R.png" />
+        </div>
+      </section>
+      
+      <section id="info-message" class="hidden">
+        <input type="image" class="action-buttons" id="x-button-IF" src="https://i.imgur.com/exrXAGT.png" />
+        <h3 id="info-title">Informationen</h3>
+        <p id="info-text">
+          <b>System:</b> Windows 11 <br />
+          <b>Benutzer:</b> shaheda1 <br />
+          <b>Computer:</b> Gaming-PC <br />
+          <b>Prozessor:</b> Intel Caffeine i7 <br />
+          <b>RAM:</b> 32GB Overclocked <br />
+          <b>Grafikkarte:</b> NVIDIA RTX 5090 <br />
+          <b>Festplatte:</b> 1TB <br />
+          <b>Uptime:</b> [placeholder] <br />
+          <b>Updates:</b> Nie (läuft perfekt) <br />
+        </p>
+      </section>
+      <section class="taskbar">
+        <input type="image" id="start" class="buttons" src="https://i.imgur.com/Xbzg9e0.png" />
+        <div class="taskbar-sprite likes-exe-button"></div>
+        <div class="taskbar-sprite dislikes-exe-button"></div>
+        <div class="taskbar-sprite new-exe-button"></div>
+      </section>
+    </section>
+    <script src="script.js"></script>
+  </body>
+</html>

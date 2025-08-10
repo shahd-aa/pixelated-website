@@ -1,0 +1,460 @@
+/* ╔══════════✬✩══════════╡BASE OF DOCUMENT╞═════════✩✬══════════╗ */
+html {
+  font-size: 16px;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+body {
+  background-image: url("https://i.imgur.com/8lFlHX9.png");
+  background-position: center;
+  background-size: cover;
+
+  font-family: "Pixelify Sans", sans-serif; 
+  font-weight: 400;
+  font-style: normal;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  position: relative; 
+}
+
+.interface {
+  display: flex;
+  align-items: flex-start;
+  position: absolute;
+}
+/* ╚══════════════════════════ ❀•°❀°•❀ ══════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡TASKBAR╞═════════✩✬══════════╗ */
+.taskbar {
+  background-image: url("https://i.imgur.com/kI0WrS7.png");
+  background-position: center;
+  background-size: cover;
+
+  position: fixed;
+  display: flex;
+  align-items: stretch;
+
+  width: 100%;
+  height: 4vh;
+  bottom: 0;
+}
+
+#start {
+  width: 11.25rem; 
+  height: 100%;
+}
+/* ╚══════════════════════ ❀•°❀°•❀ ══════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡MULTIPLE ASSIGNMENTS FOR SAME PROPERTIES╞═════════✩✬══════════╗ */
+:root {
+  --public-pixel: "Public Pixel", sans-serif;
+  --dark-desaturated-cyan: #3e5366;
+  --dark-desaturated-blue: #313552;
+
+  /* responsive sizing variables */
+  --popup-width: clamp(25rem, 40vw, 31.25rem);
+  --popup-height: clamp(35rem, 60vh, 43.75rem);
+  --button-size: 2.8125rem; 
+  --small-button-size: 1.875rem;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.likes-exe-button:hover,
+.dislikes-exe-button:hover,
+.new-exe-button:hover,
+.action-buttons:hover {
+  opacity: 0.7;
+}
+/* ╚══════════════════════════════════════ ❀•°❀°•❀ ══════════════════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡ABOUT ME POPUP╞═════════✩✬══════════╗ */
+#aboutme-popup {
+  background-image: url("https://i.imgur.com/09OngX3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+
+  width: var(--popup-width);
+  height: 43.75rem;
+}
+
+#figure-image {
+  display: flex;
+  position: absolute;
+
+  width: 40%; 
+  height: 70%; 
+
+  top: 18%;
+  left: 8%;
+}
+
+#profile-picture {
+  position: absolute;
+
+  width: 3.75rem; 
+  height: 3.75rem; 
+
+  top: 0.9375rem; 
+  left: 2.5rem;
+}
+
+.name-and-level {
+  font-size: 1.5rem;
+  word-spacing: 0.625rem; 
+
+  position: absolute;
+
+  left: 22%;
+  top: 0.4375rem; 
+}
+
+.info-list {
+  position: absolute;
+
+  width: 50%;
+  height: 75%;
+
+  left: 46.5%;
+  top: 12%;
+}
+
+ul {
+  font-size: 1.25rem; 
+  line-height: 1.5;
+  word-spacing: 0.1875rem; 
+
+  margin: 0.625rem; /* 10px */
+}
+
+li {
+  margin-bottom: 0.625rem; /* 10px */
+}
+
+.note {
+  padding-bottom: 0.9375rem; /* 15px */
+}
+/* ╚═════════════════════════ ❀•°❀°•❀ ═════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡INFO AND SHUTDOWN BUTTONS╞═════════✩✬══════════╗ */
+
+.actions-text {
+  font-size: 1rem; /* 16px */
+  padding: 0.625rem 0; /* 10px 0 */
+}
+
+.actions {
+  display: flex;
+  position: absolute;
+
+  padding: 0.125rem;
+  bottom: 0.15rem; 
+  left: 25%;
+  gap: 0.625rem; 
+  align-items: center;
+}
+
+.system-buttons {
+  width: var(--button-size);
+  height: var(--button-size);
+}
+/* ╚════════════════════════════════ ❀•°❀°•❀ ════════════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡STATUS OFF STATE╞═════════✩✬══════════╗ */
+.boot-message {
+  font-family: var(--public-pixel);
+  font-size: 2.5rem; /* 40px */
+  color: #244078;
+
+  position: relative;
+  margin-top: 80vh; /* Use viewport units for centering */
+  text-align: center;
+}
+
+.ellipsis-animation::after {
+  content: "";
+  animation: ellipsis 2s steps(4, end) infinite;
+}
+
+#shutting-down-container,
+#turning-on-container {
+  background-image: url("https://i.imgur.com/4BnzWeC.gif");
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: center;  
+
+  position: fixed; 
+  text-align: center; 
+
+  z-index: 1000;
+  width: 100%; 
+  height: 100%; 
+}
+
+#off-image {
+  background-image: linear-gradient(0deg, #180c36 50%, #0b0517 50%);
+  background-size: 0.625rem 0.625rem; /* 10px */
+
+  position: fixed; 
+  top: 0;
+  left: 0;
+  text-align: center;
+
+  z-index: 1000;
+  width: 100vw;
+  height: 100vh;
+}
+
+.text-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.text-container input,
+.text-container p {
+  display: inline-block;
+}
+
+#off-icon {
+  display: block;
+  margin: auto;
+  padding: 6.25rem; /* 100px */
+  opacity: 0.9;
+}
+
+.status-text {
+  font-family: "Public Pixel", sans-serif;
+  font-size: 1.875rem; /* 30px */
+  text-align: center;
+  color: #00a000;
+
+  margin: 1.875rem; /* 30px */
+  padding: 1.875rem 0; /* 30px 0 */
+
+  opacity: 0.9;
+}
+
+#cursor {
+  background: green;
+  outline: none;
+
+  border: none;
+  border-radius: 0;
+
+  margin-top: 1.5rem;
+  width: 1rem;
+  height: 0.0625rem; 
+
+  animation: blink 1s infinite;
+}
+/* ╚══════════════════════════ ❀•°❀°•❀ ══════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡MESSAGES╞═════════✩✬══════════╗ */
+#shut-down-message {
+  background-image: url("https://i.imgur.com/VOyw0hV.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+
+  width: clamp(20rem, 40vw, 32.5rem);
+  height: clamp(11rem, 15vh, 11rem); 
+
+  padding: 0.625rem; /* 10px */
+}
+
+.message-text {
+  color: var(--dark-desaturated-cyan);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+  margin-top: 0.2rem;
+  padding: 0 1rem;
+}
+
+.message-header {
+  color: var(--dark-desaturated-blue);
+  display: inline;
+  font-size: 1.8rem;
+  margin-left: 1rem; 
+}
+
+.button-container {
+  position: absolute;
+  bottom: 0.8rem; 
+  left: 25%;
+  gap: 2rem;
+  width: 100%;
+  display: flex;
+  padding: 0 1rem;
+}
+
+#info-message {
+  background-image: url("https://i.imgur.com/NKdUDj3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: clamp(25rem, 35vw, 27.8125rem);
+  height: clamp(35rem, 60vh, 40.625rem); 
+}
+
+#info-text {
+  position: absolute;
+
+  font-size: 1.5rem; 
+  line-height: 2;
+  word-spacing: 0.625rem; 
+
+  margin: 1.25rem; 
+  top: 4.375rem; 
+}
+
+#info-title {
+  position: absolute;
+
+  font-size: 1.875rem; 
+  margin: 1.25rem 0; 
+  left: 5.625rem; 
+}
+/* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡X, YES, NO BUTTONS╞═════════✩✬══════════╗ */
+#x-button-SD {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem; 
+
+  width: var(--small-button-size);
+  height: var(--small-button-size);
+}
+
+#ja-button,
+#nein-button {
+  width: 6.25rem;
+  height: 3.125rem; 
+}
+
+#x-button-IF {
+  position: absolute;
+
+  width: var(--button-size);
+  height: var(--button-size);
+  top: 0.625rem; 
+  right: 0.625rem; 
+}
+/* ╚════════════════════════════ ❀•°❀°•❀ ════════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡APP SPRITE╞═════════✩✬══════════╗ */
+.app-sprite {
+  background-image: url(https://i.imgur.com/aZyoMUc.png);
+  background-repeat: no-repeat;
+  display: block;
+  transform: scale(0.6);
+}
+
+.sleep-mode-icon {
+  width: 216px;
+  height: 216px;
+  background-position: -5px -5px;
+}
+
+.trash-can-icon {
+  width: 196px;
+  height: 196px;
+  background-position: -231px -5px;
+}
+
+.gaming-icon {
+  width: 207px;
+  height: 144px;
+  background-position: -437px -5px;
+}
+
+.school-icon {
+  width: 210px;
+  height: 168px;
+  background-position: -654px -5px;
+}
+
+.envelope-icon {
+  width: 203px;
+  height: 133px;
+  background-position: -874px -5px;
+}
+/* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
+
+/* ╔══════════✬✩══════════╡BUTTONS ON TASKBAR SPRITE╞═════════✩✬══════════╗ */
+.taskbar-sprite {
+  background-image: url(https://i.imgur.com/soembsW.png);
+  background-repeat: no-repeat;
+  display: inline-block;
+  margin: 0 4px;
+}
+
+.likes-exe-button {
+  width: 224px;
+  height: 48px;
+  background-position: -5px -5px;
+}
+
+.dislikes-exe-button {
+  width: 224px;
+  height: 48px;
+  background-position: -239px -5px;
+}
+
+.new-exe-button {
+  width: 224px;
+  height: 48px;
+  background-position: -473px -5px;
+}
+/* ╚══════════════════════════════ ❀•°❀°•❀ ══════════════════════════════╝ */
+/* animations */
+@keyframes blink {
+  0%,
+  80% {
+      background: green;
+  }
+  81%,
+  100% {
+      pointer-events: auto;
+      background: transparent;
+  }
+}
+
+@keyframes ellipsis {
+  0%   {content: "";}
+  25%  {content: ".";}
+  50%  {content: "..";}
+  75%  {content: "..."}
+  100% {content: "";}
+}
