@@ -7,12 +7,15 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@400..700&display=swap" rel="stylesheet" />
-
     <link href="https://fonts.cdnfonts.com/css/public-pixel" rel="stylesheet" />
-    <style>
+    <link href="https://fonts.cdnfonts.com/css/superhelio" rel="stylesheet">
+   <!-- <style>
       @import url("https://fonts.cdnfonts.com/css/public-pixel");
-    </style>
+    </style> -->
 
+    <!-- animation library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    
     <title>about me</title>
     <link href="style.css" rel="stylesheet" type="text/css" />
   </head>
@@ -76,13 +79,15 @@
       </section>
       <!-- shut down message -->
       <section id="shut-down-message" class="hidden">
-        <h2 class="message-header"> </h2>
-        <input type="image" class="action-buttons" id="x-button-SD" src="https://i.imgur.com/exrXAGT.png" />
-        <!-- <p class="message-text">Möchten Sie wirklich herunterfahren? :(</p> -->
-        <p class="message-text"> </p>
+        <section id="popup-messages">
+          <h2 class="message-header"> </h2>
+          <input type="image" class="action-buttons" id="x-button-SD" src="https://i.imgur.com/exrXAGT.png" />
+          <p class="message-text"> </p>
+        </section>
         <div class="button-container">
           <input type="image" class="action-buttons" id="ja-button" src="https://i.imgur.com/MF1Z8KX.png" />
           <input type="image" class="action-buttons" id="nein-button" src="https://i.imgur.com/6mtyv9R.png" />
+          <input type="image" class="action-buttons" id="okay-button" src="https://i.imgur.com/OxJsVHc.png" />
         </div>
       </section>
       
@@ -97,15 +102,37 @@
           <b>RAM:</b> 32GB Overclocked <br />
           <b>Grafikkarte:</b> NVIDIA RTX 5090 <br />
           <b>Festplatte:</b> 1TB <br />
-          <b>Uptime:</b> [placeholder] <br />
+          <b>Uptime:</b> <span class="uptime-text"></span> <br />
           <b>Updates:</b> Nie (läuft perfekt) <br />
         </p>
       </section>
+      
+    <!-- LIKES POPUP -->
+    <section id="popup-container" class="hidden">
+      <div id="tab-popup">
+        <div class="ui-for-tabs">
+          <h2 class="popup-header"> </h2>
+          <p class="popup-list"> </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="start-menu" class=" hidden">
+      <div class="start-menu-background">
+        
+      </div>
+    </section>
+      
       <section class="taskbar">
-        <input type="image" id="start" class="buttons" src="https://i.imgur.com/Xbzg9e0.png" />
+        <input type="image" id="start-button" class="buttons" src="https://i.imgur.com/Xbzg9e0.png" />
         <div class="taskbar-sprite likes-exe-button"></div>
         <div class="taskbar-sprite dislikes-exe-button"></div>
         <div class="taskbar-sprite new-exe-button"></div>
+
+        <div class="date-and-time">
+          <p class="time-text"></p>
+          <p class="date-text"></p>
+        </div>
       </section>
     </section>
     <script src="script.js"></script>

@@ -37,7 +37,6 @@ html, body {
 
   position: fixed;
   display: flex;
-  align-items: stretch;
 
   width: 100%;
   height: 4vh;
@@ -48,11 +47,29 @@ html, body {
   width: 11.25rem; 
   height: 100%;
 }
+.date-and-time {
+  position: absolute;
+  right: 0;
+  width: 12rem;
+  height: 100%;
+  text-align: center;
+}
+.time-text {
+  margin: 0;
+  padding: 0;
+  font-family: var(--minecraft-font);
+  font-size: 14px;
+}
+
+.date-text {
+  margin: 1px;
+}
 /* ╚══════════════════════ ❀•°❀°•❀ ══════════════════════╝ */
 
 /* ╔══════════✬✩══════════╡MULTIPLE ASSIGNMENTS FOR SAME PROPERTIES╞═════════✩✬══════════╗ */
 :root {
   --public-pixel: "Public Pixel", sans-serif;
+  --minecraft-font: 'superhelio _regular', sans-serif;
   --dark-desaturated-cyan: #3e5366;
   --dark-desaturated-blue: #313552;
 
@@ -67,7 +84,6 @@ html, body {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition: opacity 0.2s ease;
 }
 
 .visible {
@@ -82,6 +98,8 @@ html, body {
 .action-buttons:hover {
   opacity: 0.7;
 }
+
+
 /* ╚══════════════════════════════════════ ❀•°❀°•❀ ══════════════════════════════════════╝ */
 
 /* ╔══════════✬✩══════════╡ABOUT ME POPUP╞═════════✩✬══════════╗ */
@@ -272,7 +290,7 @@ li {
 /* ╚══════════════════════════ ❀•°❀°•❀ ══════════════════════════╝ */
 
 /* ╔══════════✬✩══════════╡MESSAGES╞═════════✩✬══════════╗ */
-#shut-down-message {
+#shut-down-message, #popup-messages {
   background-image: url("https://i.imgur.com/VOyw0hV.png");
   background-repeat: no-repeat;
   background-size: cover;
@@ -347,6 +365,68 @@ li {
 }
 /* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
 
+/* POPUPS OF LIKES, DISLIKES AND NEW */
+#tab-popup {
+  background-image: url("https://i.imgur.com/zBWw3v2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  
+  position: relative;
+  overflow: hidden;
+  transition: opacity 0.5s ease;
+
+  width: clamp(19rem, 19rem, 20rem);
+  height: clamp(21.75rem, 21.75rem, 22rem);
+}
+
+#popup-container {
+  position: absolute;
+  left: 45%;
+  top: 76%;
+  
+  width: clamp(19rem, 19rem, 20rem);
+  height: clamp(21.75rem, 21.75rem, 22rem);
+}
+
+.popup-header {
+  margin: 0.7rem 1.2rem;
+}
+.popup-list {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  word-spacing: 0.25rem;
+  margin: 1.5rem 1.2rem;
+}
+
+/* START MENU */
+.start-menu-background {
+  height: 40rem;
+  width: 20rem;
+  overflow: hidden;
+}
+
+#start-menu {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  border-radius: 8px 8px 0 0;
+  background: rgba(50, 50, 50, 0.95);
+  color: white;
+
+  transform: translateY(100%);
+  opacity: 0;
+  pointer-events: none;
+
+  transition:
+    transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+    opacity 0.3s ease;
+}
+
+#start-menu.show {
+  transform: scaleY(1);
+  opacity: 1; 
+  pointer-events: auto;
+}
 /* ╔══════════✬✩══════════╡X, YES, NO BUTTONS╞═════════✩✬══════════╗ */
 #x-button-SD {
   position: absolute;
@@ -361,6 +441,14 @@ li {
 #nein-button {
   width: 6.25rem;
   height: 3.125rem; 
+}
+
+#okay-button {
+  position: absolute;
+  width: 6.5rem;
+  height: 3.125rem;
+  left: 5rem;
+  bottom: 0.15rem;
 }
 
 #x-button-IF {
@@ -378,7 +466,10 @@ li {
   background-image: url(https://i.imgur.com/aZyoMUc.png);
   background-repeat: no-repeat;
   display: block;
-  transform: scale(0.6);
+  transform: scale(0.5);
+  transform-origin: top left;
+  margin: 20px;
+  margin-bottom: -60px;
 }
 
 .sleep-mode-icon {
@@ -409,6 +500,7 @@ li {
   width: 203px;
   height: 133px;
   background-position: -874px -5px;
+  margin-bottom: -30px;
 }
 /* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
 
@@ -417,7 +509,10 @@ li {
   background-image: url(https://i.imgur.com/soembsW.png);
   background-repeat: no-repeat;
   display: inline-block;
-  margin: 0 4px;
+  margin: 0 5px;
+  transform: scale(0.85);
+  transform-origin: top left;
+  margin-right: -30px;
 }
 
 .likes-exe-button {

@@ -1,10 +1,11 @@
-document.addEventListener('DOMContentLoaded', function() {
+ddocument.addEventListener('DOMContentLoaded', function() {
   // ICONS
   const powerOffIcon = document.getElementById("power-off-button")
   const infoIcon = document.getElementById("info-button")
   const envelopeIcon = document.getElementById("envelope")
   const offIcon = document.getElementById("off-icon")
   const sleepModeIcon = document.querySelector(".sleep-mode-icon")
+  const trashCanIcon = document.querySelector(".trash-can-icon")
 
   // BUTTONS
   
@@ -12,6 +13,11 @@ document.addEventListener('DOMContentLoaded', function() {
   const xButtonIF = document.getElementById("x-button-IF")
   const noButton = document.getElementById("nein-button")
   const yesButton = document.getElementById("ja-button")
+
+  const likesTab = document.querySelector(".likes-exe-button")
+  const dislikesTab = document.querySelector(".dislikes-exe-button")
+  const okayButton = document.getElementById("okay-button")
+  const startButton = document.getElementById("start-button")
 
   // MESSAGES
   const powerOffMessage = document.getElementById("shut-down-message")
@@ -25,10 +31,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // UI POPUPS 
   const aboutMePopup = document.getElementById("aboutme-popup")
+  const tabsPopup = document.getElementById("popup-container")
+  const startMenu = document.getElementById("start-menu")
+  const startMenuDiv = document.querySelector(".start-menu-background")
 
   //TEXT
   const messageText = document.querySelector(".message-text")
-  const messageHeader = document.querySelector(".message-header")
+  const messageHeader = document.querySelector(".message-header") 
+  const popupList = document.querySelector(".popup-list")
+  const popupHeader = document.querySelector(".popup-header")
 
   //ARRAYS 
   const closeButtonPairs = [
@@ -47,7 +58,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
    function enableAllPointerEvents() {
      aboutMePopup.style.pointerEvents = "auto"
-    document.body.style.pointerEvents = 'auto'
+     document.body.style.pointerEvents = 'auto'
    }
   
     function permanentVisibility(element) {
@@ -65,6 +76,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
    function discardVisibility(element) {
      element.classList.remove("visible")
+     element.classList.remove("show")
+     function resetVariables(...variables) {
+       for (const variable of variables) {
+         if (!variable.classList.contains("visible")) {
+            variable.innerHTML = " ";
+     }}};
      enableAllPointerEvents()
    }
 
@@ -81,9 +98,9 @@ document.addEventListener('DOMContentLoaded', function() {
           aboutMePopup.style.pointerEvents = "auto"});
      }};
 
-   function changeContent(message, error) {
-     messageText.innerHTML = message
-     messageHeader.innerHTML = error
+  function changeContent(message, error, paragraph, header) {
+     paragraph.innerHTML = message
+     header.innerHTML = error
    };
 
    function disableIcons(...buttons) {
@@ -91,8 +108,16 @@ document.addEventListener('DOMContentLoaded', function() {
        if (button && button.classList.contains("visible")) {
          button.classList.remove("visible")
        }
-       button.style.display = "none"
+      button.style.display = "none"
     })};
+
+    function enableIcons(...buttons) {
+      buttons.forEach(button => {
+        if (button && !button.classList.contains("visible")) {
+          button.classList.add("visible")
+        }
+        button.style.display = "block"
+      })};
   
   //LISTENERS 
     envelopeIcon.addEventListener("click", () => {
@@ -100,21 +125,53 @@ document.addEventListener('DOMContentLoaded', function() {
       toggleVisibility(aboutSectionPopup)
     });
 
+    likesTab.addEventListener("click", () => {
+      toggleVisibility(tabsPopup)
+      let text = `• valorant & rainbow six <br> • sonnenuntergänge <br> • kreativität freilaufen zu lassen <br> • ruhige lernatmosphäre <br> • natur als therapie <br> • schulische erfolgsmomente <br> • mir mühe zu geben`
+      let header = "likes.exe"
+      changeContent(text, header, popupList, popupHeader)
+    });
+
+  dislikesTab.addEventListener("click", () => {
+    toggleVisibility(tabsPopup)
+    let text = `• zeitdruck <br> • regen <br> • zu spät aufzuwachen <br> • heißes wetter <br> • drama <br> • laute geräusche <br> • bugs beim programmieren `
+    let header = "dislikes.exe"
+    changeContent(text, header, popupList, popupHeader)
+  });
+
+  startButton.addEventListener("click", () => {
+    toggleVisibility(startMenu)
+    startMenu.classList.toggle("show")
+  })
+
     powerOffIcon.addEventListener("click", () => {
       permanentVisibility(powerOffMessage)
+      disableIcons(okayButton)
+      enableIcons(yesButton, noButton)
       let message = "Möchten Sie wirklich herunterfahren? :(";
       let error = "Achtung!"
-      changeContent(message, error)
+      changeContent(message, error, messageText, messageHeader)
     });
 
     sleepModeIcon.addEventListener("click", () => {
       permanentVisibility(powerOffMessage)
       disableIcons(yesButton, noButton)
-      let message = "hey! kannst nix löschen!"
+      enableIcons(okayButton)
+      
+      let message = "schlaf.exe nicht gefunden."
       let error = "Error!"
-      changeContent(message, error)
+      
+      changeContent(message, error, messageText, messageHeader)
     });
 
+  trashCanIcon.addEventListener("click", () => {
+    permanentVisibility(powerOffMessage)
+    disableIcons(yesButton, noButton)
+    enableIcons(okayButton)
+    let message = "hey! du kannst nix löschen! das ist mein PC!!! >:("
+    let error = "Error!"
+    changeContent(message, error, messageText, messageHeader)
+  });
   
     infoIcon.addEventListener("click", () => {
       permanentVisibility(infoMessage)
@@ -123,6 +180,10 @@ document.addEventListener('DOMContentLoaded', function() {
     closingMessage(closeButtonPairs)
   
     noButton.addEventListener("click", () => {
+      discardVisibility(powerOffMessage)
+    });
+
+    okayButton.addEventListener("click", () => {
       discardVisibility(powerOffMessage)
     });
 
@@ -137,4 +198,64 @@ document.addEventListener('DOMContentLoaded', function() {
         executeReboot(event)
       }
     });
+
+// UPTIME IN INFO AND DATE/TIME IN TASKBAR
+function getTime() {
+  const months = ["NaN", "Jan", "Feb", "Mar", "Apr", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  const days = ["NaN", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+  const endings = ["st", "nd", "rd", "th"]
+  
+  let currentTime = new Date()
+  
+  let currentSeconds = currentTime.getSeconds().toString().padStart(2, "0")
+  let currentMinute = currentTime.getMinutes().toString().padStart(2, "0")
+  let currentHour = currentTime.getHours()
+  let currentDay = currentTime.getDay()
+  let currentMonth = currentTime.getMonth() 
+  let currentYear = currentTime.getFullYear()
+  let currentDate = currentTime.getDate()
+  const timeText = document.querySelector(".time-text")
+  const dateText = document.querySelector(".date-text")
+
+  let stringDate = currentDay.toString()
+  let lastDigit = stringDate[stringDate.length - 1]
+  let ending = ""
+
+    if (lastDigit == "1" && stringDate !== "11") {
+      ending = "st"
+    } else if (lastDigit == "2" && stringDate !== "12") {
+      ending = "nd"
+    } else if (lastDigit == "3" && stringDate !== "13") {
+     ending = "rd"
+    } else {
+      ending = "th"
+    }
+  
+  timeText.innerHTML = `${currentHour}:${currentMinute}:${currentSeconds} / ${currentYear} `
+  dateText.innerHTML = `${currentDate}${ending} of ${months.at(currentMonth)}, ${days.at(currentDay)}`
+}
+
+setInterval(getTime, 1000);
+
+let startTime
+window.onload = (event) => {
+    startTime = new Date();
+}
+
+function getTimeNow() {
+  let timeNow = new Date() 
+  let timeInMs = timeNow - startTime
+  let timeInSec = Math.floor(timeInMs / 1000) % 60 // modulo resets it to 0 after 59
+  let timeInMin = Math.floor(timeInMs / 1000 / 60) % 60
+  let timeInHr = Math.floor(timeInMs / 1000 / 3600)
+
+  let displaySeconds = timeInSec.toString().padStart(2, "0")
+  let displayMinutes = timeInMin.toString().padStart(2, "0")
+  let displayHours = timeInHr.toString().padStart(2, "0")
+  
+  // update time
+  const uptimeText = document.querySelector(".uptime-text");
+  uptimeText.innerHTML = `${displayHours} : ${displayMinutes} : ${displaySeconds}`
+}
+setInterval(getTimeNow, 1000)
 });
