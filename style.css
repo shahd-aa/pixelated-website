@@ -178,23 +178,26 @@ li {
 
 .actions-text {
   font-size: 1rem; /* 16px */
-  padding: 0.625rem 0; /* 10px 0 */
+ 
 }
 
 .actions {
+  position: static;
   display: flex;
-  position: absolute;
-
-  padding: 0.125rem;
-  bottom: 0.15rem; 
-  left: 25%;
-  gap: 0.625rem; 
-  align-items: center;
+  bottom: 0.1rem; 
+  left: 0.3rem;
+  align-items: left;
 }
 
 .system-buttons {
   width: var(--button-size);
   height: var(--button-size);
+}
+
+.info-button-container {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
 }
 /* ╚════════════════════════════════ ❀•°❀°•❀ ════════════════════════════════╝ */
 

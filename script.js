@@ -1,4 +1,4 @@
-ddocument.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function() {
   // ICONS
   const powerOffIcon = document.getElementById("power-off-button")
   const infoIcon = document.getElementById("info-button")
