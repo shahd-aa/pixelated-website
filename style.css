@@ -1,7 +1,27 @@
-/* ╔══════════✬✩══════════╡BASE OF DOCUMENT╞═════════✩✬══════════╗ */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                        BASE STYLES                                            */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  --public-pixel: "Public Pixel", sans-serif;
+  --minecraft-font: 'superhelio _regular', sans-serif;
+  --dark-desaturated-cyan: #3e5366;
+  --dark-desaturated-blue: #313552;
+
+  --popup-width: clamp(25rem, 40vw, 31.25rem);
+  --popup-height: clamp(35rem, 60vh, 43.75rem);
+  --button-size: 2.8125rem; 
+  --small-button-size: 1.875rem;
+}
+
 html {
   font-size: 16px;
+  display: block;
+  position: relative;
   width: 100%;
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
   aspect-ratio: 16 / 9;
 }
 
@@ -9,76 +29,24 @@ body {
   background-image: url("https://i.imgur.com/8lFlHX9.png");
   background-position: center;
   background-size: cover;
-
   font-family: "Pixelify Sans", sans-serif; 
   font-weight: 400;
   font-style: normal;
-}
-
-html, body {
+  position: relative;
   height: 100%;
   margin: 0;
   overflow: hidden;
-  position: relative; 
 }
 
 .interface {
   display: flex;
+  position: absolute;
   align-items: flex-start;
-  position: absolute;
-}
-/* ╚══════════════════════════ ❀•°❀°•❀ ══════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡TASKBAR╞═════════✩✬══════════╗ */
-.taskbar {
-  background-image: url("https://i.imgur.com/kI0WrS7.png");
-  background-position: center;
-  background-size: cover;
-
-  position: fixed;
-  display: flex;
-
-  width: 100%;
-  height: 4vh;
-  bottom: 0;
 }
 
-#start {
-  width: 11.25rem; 
-  height: 100%;
-}
-.date-and-time {
-  position: absolute;
-  right: 0;
-  width: 12rem;
-  height: 100%;
-  text-align: center;
-}
-.time-text {
-  margin: 0;
-  padding: 0;
-  font-family: var(--minecraft-font);
-  font-size: 14px;
-}
-
-.date-text {
-  margin: 1px;
-}
-/* ╚══════════════════════ ❀•°❀°•❀ ══════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡MULTIPLE ASSIGNMENTS FOR SAME PROPERTIES╞═════════✩✬══════════╗ */
-:root {
-  --public-pixel: "Public Pixel", sans-serif;
-  --minecraft-font: 'superhelio _regular', sans-serif;
-  --dark-desaturated-cyan: #3e5366;
-  --dark-desaturated-blue: #313552;
-
-  /* responsive sizing variables */
-  --popup-width: clamp(25rem, 40vw, 31.25rem);
-  --popup-height: clamp(35rem, 60vh, 43.75rem);
-  --button-size: 2.8125rem; 
-  --small-button-size: 1.875rem;
-}
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                     UTILITY CLASSES                                           */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 
 .hidden {
   opacity: 0;
@@ -92,101 +60,93 @@ html, body {
   pointer-events: auto;
 }
 
-.likes-exe-button:hover,
-.dislikes-exe-button:hover,
-.new-exe-button:hover,
-.action-buttons:hover {
-  opacity: 0.7;
-}
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                        TASKBAR                                                */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 
-
-/* ╚══════════════════════════════════════ ❀•°❀°•❀ ══════════════════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡ABOUT ME POPUP╞═════════✩✬══════════╗ */
-#aboutme-popup {
-  background-image: url("https://i.imgur.com/09OngX3.png");
-  background-repeat: no-repeat;
+.taskbar {
+  background-image: url("https://i.imgur.com/kI0WrS7.png");
+  background-position: center;
   background-size: cover;
-
-  position: relative;
-  overflow: hidden;
-  transition: opacity 0.5s ease;
-
-  width: var(--popup-width);
-  height: 43.75rem;
-}
-
-#figure-image {
   display: flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 4vh;
+}
+
+#start {
+  width: 11.25rem; 
+  height: 100%;
+}
+
+.date-and-time {
+  text-align: center;
   position: absolute;
-
-  width: 40%; 
-  height: 70%; 
-
-  top: 18%;
-  left: 8%;
+  right: 0;
+  width: 12rem;
+  height: 100%;
 }
 
-#profile-picture {
-  position: absolute;
-
-  width: 3.75rem; 
-  height: 3.75rem; 
-
-  top: 0.9375rem; 
-  left: 2.5rem;
+.time-text {
+  font-family: var(--minecraft-font);
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
 }
 
-.name-and-level {
-  font-size: 1.5rem;
-  word-spacing: 0.625rem; 
-
-  position: absolute;
-
-  left: 22%;
-  top: 0.4375rem; 
+.date-text {
+  margin: 1px;
 }
 
-.info-list {
-  position: absolute;
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                      START MENU                                               */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 
-  width: 50%;
-  height: 75%;
-
-  left: 46.5%;
-  top: 12%;
+#start-menu {
+  background: rgba(50, 50, 50, 0.95);
+  color: white;
+  border-radius: 8px 8px 0 0;
+  transition: transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
+              opacity 0.3s ease;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  transform: translateY(100%);
+  pointer-events: none;
 }
 
-ul {
-  font-size: 1.25rem; 
-  line-height: 1.5;
-  word-spacing: 0.1875rem; 
-
-  margin: 0.625rem; /* 10px */
+#start-menu.show {
+  opacity: 1; 
+  transform: scaleY(1);
+  pointer-events: auto;
 }
 
-li {
-  margin-bottom: 0.625rem; /* 10px */
-}
-
-.note {
-  padding-bottom: 0.9375rem; /* 15px */
-}
-/* ╚═════════════════════════ ❀•°❀°•❀ ═════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡INFO AND SHUTDOWN BUTTONS╞═════════✩✬══════════╗ */
-
-.actions-text {
-  font-size: 1rem; /* 16px */
- 
+.start-menu-background {
+  overflow: hidden;
+  width: 20rem;
+  height: 40rem;
 }
 
 .actions {
-  position: static;
-  display: flex;
-  bottom: 0.1rem; 
+  display: inline-block;
+  position: absolute;
+  bottom: 3.2rem; 
   left: 0.3rem;
   align-items: left;
+}
+
+.info-button-container, 
+.power-off-button-container {
+  display: flex;
+  align-items: center;
+  margin-left: 0.3rem;
+  gap: 0.5rem;
+}
+
+.actions-text {
+  font-size: 1rem;
 }
 
 .system-buttons {
@@ -194,28 +154,320 @@ li {
   height: var(--button-size);
 }
 
-.info-button-container {
-  display: flex;
-  align-items: center;
-  gap: 0.7rem;
-}
-/* ╚════════════════════════════════ ❀•°❀°•❀ ════════════════════════════════╝ */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                    ABOUT ME POPUP                                             */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 
-/* ╔══════════✬✩══════════╡STATUS OFF STATE╞═════════✩✬══════════╗ */
-.boot-message {
-  font-family: var(--public-pixel);
-  font-size: 2.5rem; /* 40px */
-  color: #244078;
-
+#aboutme-popup {
+  background-image: url("https://i.imgur.com/09OngX3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity 0.5s ease;
   position: relative;
-  margin-top: 80vh; /* Use viewport units for centering */
-  text-align: center;
+  overflow: hidden;
+  width: var(--popup-width);
+  height: 43.75rem;
 }
 
-.ellipsis-animation::after {
-  content: "";
-  animation: ellipsis 2s steps(4, end) infinite;
+#profile-picture {
+  position: absolute;
+  top: 0.9375rem; 
+  left: 2.5rem;
+  width: 3.75rem; 
+  height: 3.75rem; 
 }
+
+.name-and-level {
+  font-size: 1.5rem;
+  word-spacing: 0.625rem; 
+  position: absolute;
+  top: 0.4375rem; 
+  left: 22%;
+}
+
+#figure-image {
+  display: flex;
+  position: absolute;
+  top: 18%;
+  left: 8%;
+  width: 40%; 
+  height: 70%; 
+}
+
+.info-list {
+  position: absolute;
+  top: 12%;
+  left: 46.5%;
+  width: 50%;
+  height: 75%;
+}
+
+ul {
+  font-size: 1.25rem; 
+  line-height: 1.5;
+  word-spacing: 0.1875rem; 
+  margin: 0.625rem;
+}
+
+li {
+  margin-bottom: 0.625rem;
+}
+
+.note {
+  padding-bottom: 0.9375rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                       MESSAGES                                                */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+#shut-down-message, 
+.popup-messages {
+  background-image: url("https://i.imgur.com/VOyw0hV.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translate(-50%, -50%); 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: clamp(20rem, 40vw, 32.5rem);
+  height: clamp(11rem, 15vh, 11rem); 
+  padding: 0.625rem;
+}
+
+#welcome-message {
+  background-image: url("https://i.imgur.com/okDYob8.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translate(-50%, -50%); 
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: clamp(18rem, 38vw, 31.4rem);
+  height: clamp(15rem, 14vh, 14.5rem); 
+  padding: 0.625rem;
+}
+
+#welcome-text {
+  color: rgb(156, 113, 82);
+  margin-top: 0.7rem;
+  word-spacing: 4px;
+}
+
+.message-header {
+  color: var(--dark-desaturated-blue);
+  font-size: 1.8rem;
+  display: inline;
+  margin-left: 1rem; 
+}
+
+.message-text {
+  color: var(--dark-desaturated-cyan);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+  margin-top: 0.2rem;
+  padding: 0 1rem;
+}
+
+.button-container {
+  display: flex;
+  position: absolute;
+  bottom: 0.8rem; 
+  left: 25%;
+  width: 100%;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                     INFO MESSAGE                                              */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+#info-message {
+  background-image: url("https://i.imgur.com/NKdUDj3.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: translate(-50%, -50%);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: clamp(25rem, 35vw, 27.8125rem);
+  height: clamp(35rem, 60vh, 40.625rem); 
+}
+
+#info-title {
+  font-size: 1.875rem; 
+  position: absolute;
+  left: 5.625rem; 
+  margin: 1.25rem 0; 
+}
+
+#info-text {
+  font-size: 1.5rem; 
+  line-height: 2;
+  word-spacing: 0.625rem; 
+  position: absolute;
+  top: 4.375rem; 
+  margin: 1.25rem; 
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                  LIKES/DISLIKES POPUP                                         */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+#popup-container {
+  position: absolute;
+  top: 76%;
+  left: 45%;
+  width: clamp(19rem, 19rem, 20rem);
+  height: clamp(21.75rem, 21.75rem, 22rem);
+}
+
+#tab-popup {
+  background-image: url("https://i.imgur.com/zBWw3v2.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: opacity 0.5s ease;
+  position: relative;
+  overflow: hidden;
+  width: clamp(19rem, 19rem, 20rem);
+  height: clamp(21.75rem, 21.75rem, 22rem);
+}
+
+.popup-header {
+  margin: 0.7rem 1.2rem;
+}
+
+.popup-list {
+  font-size: 1.1rem;
+  line-height: 1.9;
+  word-spacing: 0.25rem;
+  margin: 1.5rem 1.2rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                        BUTTONS                                                */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+.likes-exe-button:hover,
+.dislikes-exe-button:hover,
+.new-exe-button:hover,
+.action-buttons:hover {
+  opacity: 0.7;
+}
+
+#x-button-SD, 
+#x-button-WM {
+  position: absolute;
+  top: 0.5rem; 
+  right: 0.5rem;
+  width: var(--small-button-size);
+  height: var(--small-button-size);
+}
+
+#x-button-WM {
+  top: 0.4rem; 
+  right: 1.2rem; 
+}
+
+#x-button-IF {
+  position: absolute;
+  top: 0.625rem; 
+  right: 0.625rem; 
+  width: var(--button-size);
+  height: var(--button-size);
+}
+
+#ja-button,
+#nein-button {
+  width: 6.25rem;
+  height: 3.125rem; 
+}
+
+#okay-button {
+  position: absolute;
+  bottom: 0.15rem;
+  left: 5rem;
+  width: 6.5rem;
+  height: 3.125rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                        SPRITES                                                */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+.app-sprite {
+  background-image: url(https://i.imgur.com/aZyoMUc.png);
+  background-repeat: no-repeat;
+  transform: scale(0.5);
+  transform-origin: top left;
+  display: block;
+  margin: 20px;
+  margin-bottom: -60px;
+}
+
+.sleep-mode-icon {
+  background-position: -5px -5px;
+  width: 216px;
+  height: 216px;
+}
+
+.trash-can-icon {
+  background-position: -231px -5px;
+  width: 196px;
+  height: 196px;
+}
+
+.gaming-icon {
+  background-position: -437px -5px;
+  width: 207px;
+  height: 144px;
+}
+
+.school-icon {
+  background-position: -654px -5px;
+  width: 210px;
+  height: 168px;
+}
+
+.envelope-icon {
+  background-position: -874px -5px;
+  width: 203px;
+  height: 133px;
+  margin-bottom: -30px;
+}
+
+.taskbar-sprite {
+  background-image: url(https://i.imgur.com/soembsW.png);
+  background-repeat: no-repeat;
+  transform: scale(0.85);
+  transform-origin: top left;
+  display: inline-block;
+  margin: 0 5px;
+  margin-right: -30px;
+}
+
+.likes-exe-button {
+  background-position: -5px -5px;
+  width: 224px;
+  height: 48px;
+}
+
+.dislikes-exe-button {
+  background-position: -239px -5px;
+  width: 224px;
+  height: 48px;
+}
+
+.new-exe-button {
+  background-position: -473px -5px;
+  width: 224px;
+  height: 48px;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                    STATUS OFF STATE                                           */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 
 #shutting-down-container,
 #turning-on-container {
@@ -223,10 +475,8 @@ li {
   background-repeat: no-repeat;
   background-size: cover; 
   background-position: center;  
-
-  position: fixed; 
   text-align: center; 
-
+  position: fixed; 
   z-index: 1000;
   width: 100%; 
   height: 100%; 
@@ -234,16 +484,40 @@ li {
 
 #off-image {
   background-image: linear-gradient(0deg, #180c36 50%, #0b0517 50%);
-  background-size: 0.625rem 0.625rem; /* 10px */
-
+  background-size: 0.625rem 0.625rem;
+  text-align: center;
   position: fixed; 
   top: 0;
   left: 0;
-  text-align: center;
-
   z-index: 1000;
   width: 100vw;
   height: 100vh;
+}
+
+.boot-message {
+  color: #244078;
+  font-family: var(--public-pixel);
+  font-size: 2.5rem;
+  text-align: center;
+  position: relative;
+  margin-top: 80vh;
+}
+
+.status-text {
+  color: #00a000;
+  font-family: "Public Pixel", sans-serif;
+  font-size: 1.875rem;
+  text-align: center;
+  opacity: 0.9;
+  margin: 1.875rem;
+  padding: 1.875rem 0;
+}
+
+#off-icon {
+  opacity: 0.9;
+  display: block;
+  margin: auto;
+  padding: 6.25rem;
 }
 
 .text-container {
@@ -258,301 +532,40 @@ li {
   display: inline-block;
 }
 
-#off-icon {
-  display: block;
-  margin: auto;
-  padding: 6.25rem; /* 100px */
-  opacity: 0.9;
-}
-
-.status-text {
-  font-family: "Public Pixel", sans-serif;
-  font-size: 1.875rem; /* 30px */
-  text-align: center;
-  color: #00a000;
-
-  margin: 1.875rem; /* 30px */
-  padding: 1.875rem 0; /* 30px 0 */
-
-  opacity: 0.9;
-}
-
 #cursor {
   background: green;
-  outline: none;
-
   border: none;
   border-radius: 0;
-
+  outline: none;
+  animation: blink 1s infinite;
   margin-top: 1.5rem;
   width: 1rem;
   height: 0.0625rem; 
-
-  animation: blink 1s infinite;
-}
-/* ╚══════════════════════════ ❀•°❀°•❀ ══════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡MESSAGES╞═════════✩✬══════════╗ */
-#shut-down-message, #popup-messages {
-  background-image: url("https://i.imgur.com/VOyw0hV.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%); 
-
-  width: clamp(20rem, 40vw, 32.5rem);
-  height: clamp(11rem, 15vh, 11rem); 
-
-  padding: 0.625rem; /* 10px */
 }
 
-.message-text {
-  color: var(--dark-desaturated-cyan);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  text-align: center;
-  margin-top: 0.2rem;
-  padding: 0 1rem;
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+/*                                      ANIMATIONS                                               */
+/* ══════════════════════════════════════════════════════════════════════════════════════════════ */
+
+.ellipsis-animation::after {
+  content: "";
+  animation: ellipsis 2s steps(4, end) infinite;
 }
 
-.message-header {
-  color: var(--dark-desaturated-blue);
-  display: inline;
-  font-size: 1.8rem;
-  margin-left: 1rem; 
-}
-
-.button-container {
-  position: absolute;
-  bottom: 0.8rem; 
-  left: 25%;
-  gap: 2rem;
-  width: 100%;
-  display: flex;
-  padding: 0 1rem;
-}
-
-#info-message {
-  background-image: url("https://i.imgur.com/NKdUDj3.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  width: clamp(25rem, 35vw, 27.8125rem);
-  height: clamp(35rem, 60vh, 40.625rem); 
-}
-
-#info-text {
-  position: absolute;
-
-  font-size: 1.5rem; 
-  line-height: 2;
-  word-spacing: 0.625rem; 
-
-  margin: 1.25rem; 
-  top: 4.375rem; 
-}
-
-#info-title {
-  position: absolute;
-
-  font-size: 1.875rem; 
-  margin: 1.25rem 0; 
-  left: 5.625rem; 
-}
-/* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
-
-/* POPUPS OF LIKES, DISLIKES AND NEW */
-#tab-popup {
-  background-image: url("https://i.imgur.com/zBWw3v2.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  
-  position: relative;
-  overflow: hidden;
-  transition: opacity 0.5s ease;
-
-  width: clamp(19rem, 19rem, 20rem);
-  height: clamp(21.75rem, 21.75rem, 22rem);
-}
-
-#popup-container {
-  position: absolute;
-  left: 45%;
-  top: 76%;
-  
-  width: clamp(19rem, 19rem, 20rem);
-  height: clamp(21.75rem, 21.75rem, 22rem);
-}
-
-.popup-header {
-  margin: 0.7rem 1.2rem;
-}
-.popup-list {
-  font-size: 1.1rem;
-  line-height: 1.9;
-  word-spacing: 0.25rem;
-  margin: 1.5rem 1.2rem;
-}
-
-/* START MENU */
-.start-menu-background {
-  height: 40rem;
-  width: 20rem;
-  overflow: hidden;
-}
-
-#start-menu {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  border-radius: 8px 8px 0 0;
-  background: rgba(50, 50, 50, 0.95);
-  color: white;
-
-  transform: translateY(100%);
-  opacity: 0;
-  pointer-events: none;
-
-  transition:
-    transform 0.3s cubic-bezier(0.65, 0, 0.35, 1),
-    opacity 0.3s ease;
-}
-
-#start-menu.show {
-  transform: scaleY(1);
-  opacity: 1; 
-  pointer-events: auto;
-}
-/* ╔══════════✬✩══════════╡X, YES, NO BUTTONS╞═════════✩✬══════════╗ */
-#x-button-SD {
-  position: absolute;
-  right: 0.5rem;
-  top: 0.5rem; 
-
-  width: var(--small-button-size);
-  height: var(--small-button-size);
-}
-
-#ja-button,
-#nein-button {
-  width: 6.25rem;
-  height: 3.125rem; 
-}
-
-#okay-button {
-  position: absolute;
-  width: 6.5rem;
-  height: 3.125rem;
-  left: 5rem;
-  bottom: 0.15rem;
-}
-
-#x-button-IF {
-  position: absolute;
-
-  width: var(--button-size);
-  height: var(--button-size);
-  top: 0.625rem; 
-  right: 0.625rem; 
-}
-/* ╚════════════════════════════ ❀•°❀°•❀ ════════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡APP SPRITE╞═════════✩✬══════════╗ */
-.app-sprite {
-  background-image: url(https://i.imgur.com/aZyoMUc.png);
-  background-repeat: no-repeat;
-  display: block;
-  transform: scale(0.5);
-  transform-origin: top left;
-  margin: 20px;
-  margin-bottom: -60px;
-}
-
-.sleep-mode-icon {
-  width: 216px;
-  height: 216px;
-  background-position: -5px -5px;
-}
-
-.trash-can-icon {
-  width: 196px;
-  height: 196px;
-  background-position: -231px -5px;
-}
-
-.gaming-icon {
-  width: 207px;
-  height: 144px;
-  background-position: -437px -5px;
-}
-
-.school-icon {
-  width: 210px;
-  height: 168px;
-  background-position: -654px -5px;
-}
-
-.envelope-icon {
-  width: 203px;
-  height: 133px;
-  background-position: -874px -5px;
-  margin-bottom: -30px;
-}
-/* ╚════════════════════════ ❀•°❀°•❀ ════════════════════════╝ */
-
-/* ╔══════════✬✩══════════╡BUTTONS ON TASKBAR SPRITE╞═════════✩✬══════════╗ */
-.taskbar-sprite {
-  background-image: url(https://i.imgur.com/soembsW.png);
-  background-repeat: no-repeat;
-  display: inline-block;
-  margin: 0 5px;
-  transform: scale(0.85);
-  transform-origin: top left;
-  margin-right: -30px;
-}
-
-.likes-exe-button {
-  width: 224px;
-  height: 48px;
-  background-position: -5px -5px;
-}
-
-.dislikes-exe-button {
-  width: 224px;
-  height: 48px;
-  background-position: -239px -5px;
-}
-
-.new-exe-button {
-  width: 224px;
-  height: 48px;
-  background-position: -473px -5px;
-}
-/* ╚══════════════════════════════ ❀•°❀°•❀ ══════════════════════════════╝ */
-/* animations */
 @keyframes blink {
-  0%,
-  80% {
-      background: green;
+  0%, 80% {
+    background: green;
   }
-  81%,
-  100% {
-      pointer-events: auto;
-      background: transparent;
+  81%, 100% {
+    background: transparent;
+    pointer-events: auto;
   }
 }
 
 @keyframes ellipsis {
-  0%   {content: "";}
-  25%  {content: ".";}
-  50%  {content: "..";}
-  75%  {content: "..."}
-  100% {content: "";}
+  0%   { content: ""; }
+  25%  { content: "."; }
+  50%  { content: ".."; }
+  75%  { content: "..."; }
+  100% { content: ""; }
 }
