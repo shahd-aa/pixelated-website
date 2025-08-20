@@ -7,7 +7,7 @@
   --minecraft-font: 'superhelio _regular', sans-serif;
   --dark-desaturated-cyan: #3e5366;
   --dark-desaturated-blue: #313552;
-  --dark-gray: #545454;
+  --dark-gray: #3f3f3f;
 
   --popup-width: clamp(25rem, 40vw, 31.25rem);
   --popup-height: clamp(35rem, 60vh, 43.75rem);
@@ -125,17 +125,14 @@ body {
 }
 
 .start-menu-background {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  margin-bottom: 2.5rem;
+
   overflow: hidden;
   width: 20rem;
   height: 40rem;
-}
-
-.actions {
-  display: inline-block;
-  position: absolute;
-  bottom: 3.2rem; 
-  left: 0.3rem;
-  align-items: left;
 }
 
 .info-button-container, 
@@ -195,6 +192,14 @@ body {
 .offline-badge {
   width: 1.5rem;
   height: 1.5rem;
+  margin-left: 1rem;
+}
+
+.offline-note {
+  color: var(--dark-gray);
+  font-size: 24px;
+  padding-right: 5px;
+  border-right: solid;
 }
 
 .badge-div {
@@ -214,18 +219,31 @@ body {
 
 .badge-text {
   margin: 0.5rem 2.5rem;
+  font-weight: 600;
 }
 
 #ego-tag {
   background-image: url("https://i.imgur.com/s8bahpL.png")
 }
 
+#ego-text {
+  color: rgb(61, 61, 61)
+}
+
 #meow-tag {
   background-image: url("https://i.imgur.com/qnXOBoy.png")
 }
 
+#meow-text {
+  color: rgb(58, 37, 70)
+}
+
 #bunni-tag {
   background-image: url("https://i.imgur.com/CWxNc5A.png")
+}
+
+#bunni-text {
+  color: rgb(95, 81, 62)
 }
 
 .bottom-container-aboutme {
@@ -271,12 +289,6 @@ li {
   padding-bottom: 0.9375rem;
 }
 
-.offline-note {
-  color: var(--dark-gray);
-  font-size: 24px;
-  padding: 0 10px;
-  border-right: solid;
-}
 
 /* ══════════════════════════════════════════════════════════════════════════════════════════════ */
 /*                                       MESSAGES                                                */

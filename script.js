@@ -3,7 +3,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const powerOffIcon = document.getElementById("power-off-button")
   const infoIcon = document.getElementById("info-button")
   const envelopeIcon = document.getElementById("envelope")
-  const offIcon = document.getElementById("off-icon")
   const sleepModeIcon = document.querySelector(".sleep-mode-icon")
   const trashCanIcon = document.querySelector(".trash-can-icon")
 
@@ -79,16 +78,16 @@ document.addEventListener('DOMContentLoaded', function() {
     element.classList.remove("visible")
     element.classList.remove("show")
 
-    function resetVariables(...variables) {
+    enableAllPointerEvents()
+  }
+
+  function resetVariables(...variables) {
       for (const variable of variables) {
         if (!variable.classList.contains("visible")) {
           variable.innerHTML = " "
         }
       }
     }
-
-    enableAllPointerEvents()
-  }
 
   function executeReboot() {
     discardVisibility(statusOffImage)
@@ -169,6 +168,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let message = "Möchten Sie wirklich herunterfahren? :("
     let error = "Achtung!"
     changeContent(message, error, messageText, messageHeader)
+    console.log('it ran the function ')
+    resetVariables(message, error, messageText, messageHeader)
+    console.log('it ran resetvariables')
   })
 
   sleepModeIcon.addEventListener("click", () => {
@@ -214,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }, 4000)
   })
 
-  enterKey.addEventListener("keydown", (event) => {
+  document.addEventListener("keydown", (event) => {
     if (event.code == "Enter") {
       executeReboot(event)
     }
