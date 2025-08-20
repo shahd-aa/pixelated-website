@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function discardVisibility(element) {
     element.classList.remove("visible")
     element.classList.remove("show")
-    
+
     function resetVariables(...variables) {
       for (const variable of variables) {
         if (!variable.classList.contains("visible")) {
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
     }
-    
+
     enableAllPointerEvents()
   }
 
@@ -134,7 +134,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function waitAfterLoad(element) {
     setTimeout(() => { 
       toggleVisibility(element)
-    }, 2000)
+    }, 500)
 }
 
   // LISTENERS 
@@ -175,10 +175,10 @@ document.addEventListener('DOMContentLoaded', function() {
     permanentVisibility(powerOffMessage)
     disableIcons(yesButton, noButton)
     enableIcons(okayButton)
-    
+
     let message = "schlaf.exe nicht gefunden."
     let error = "Error!"
-    
+
     changeContent(message, error, messageText, messageHeader)
   })
 
@@ -224,9 +224,9 @@ document.addEventListener('DOMContentLoaded', function() {
   function getTime() {
     const months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
     const days = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
-    
+
     let currentTime = new Date()
-    
+
     let currentSeconds = currentTime.getSeconds().toString().padStart(2, "0")
     let currentMinute = currentTime.getMinutes().toString().padStart(2, "0")
     let currentHour = currentTime.getHours()
@@ -234,7 +234,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentMonth = currentTime.getMonth() 
     let currentYear = currentTime.getFullYear()
     let currentDate = currentTime.getDate()
-    
+
     const timeText = document.querySelector(".time-text")
     const dateText = document.querySelector(".date-text")
 
@@ -259,11 +259,11 @@ document.addEventListener('DOMContentLoaded', function() {
     let displaySeconds = timeInSec.toString().padStart(2, "0")
     let displayMinutes = timeInMin.toString().padStart(2, "0")
     let displayHours = timeInHr.toString().padStart(2, "0")
-    
+
     // update time
     const uptimeText = document.querySelector(".uptime-text")
     uptimeText.innerHTML = `${displayHours} : ${displayMinutes} : ${displaySeconds}`
   }
-  
+
   setInterval(getTimeNow, 1000)
 })
