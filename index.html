@@ -75,7 +75,7 @@
         </li>
         <li style="list-style: none; margin: 10px;">träumt von game development ♥︎</li>
       </ul>
-      
+
       <div class="bottom-container-aboutme">
         <div class="offline-div">
           <img class="offline-badge" src="https://i.imgur.com/OyBZJYs.png">
@@ -102,9 +102,9 @@
 
     <!-- Welcome Message -->
     <section id="welcome-message" class="hidden">
-      <h2 class="message-header"></h2>
+      <h2 class="welcome-message-header"></h2>
       <input type="image" class="action-buttons" id="x-button-WM" src="https://i.imgur.com/90Gzg57.png" />
-      <p class="message-text" id="welcome-text">heyy! schön dass du hier bist ♥︎</p>
+      <p class="welcome-message-text" id="welcome-text">heyy! schön dass du hier bist ♥︎</p>
     </section>
 
     <!-- Shutdown Message -->
@@ -142,10 +142,54 @@
     <!-- Likes/Dislikes Popup -->
     <section id="popup-container" class="hidden">
       <div id="tab-popup">
-        <div class="ui-for-tabs">
-          <h2 class="popup-header"></h2>
-          <p class="popup-list"></p>
+        <h2 class="popup-header"></h2>
+        <p class="popup-list"></p>
+      </div>
+    </section>
+
+    <!-- Mailbox Popup -->
+    <section id="mailbox-container" class="hidden">
+      <div class="test">
+      <div class="mailbox-popup">
+        <div class="mailbox-header">
+          <h1 class="app-header">inbox</h1>
+          <p class="app-text">3 mails &ensp;&ensp;&ensp;&ensp;&ensp; 5.2MB on disk </p>
         </div>
+        
+        <div class="mail-content" id="teacher-mail">
+          <div class="profile-icon-sprite teacher-profile-picture"></div>
+          <div class="mail-text-content">
+            <h3 class="user-name">Herr Müller</h3>
+            <p class="mail-header">Re: Hausaufgaben</p>
+            <p class="mail-text">hey, ich habe durch deinen hausaufgaben mal geschaut und ...  </p>
+          </div>
+        </div>
+
+        <div class="mail-content" id="riot-games-mail">
+          <div class="profile-icon-sprite riot-profile-picture"> </div>
+          <div class="mail-text-content">
+            <h3 class="user-name">RIOT Games</h3>
+            <p class="mail-header">Zusage Interview</p>
+            <p class="mail-text">hey! wir haben mal einen blick auf deinen lebenslauf geworfe...  </p>
+          </div>
+        </div>
+
+        <div class="mail-content" id="github-support-mail">
+          <div class="profile-icon-sprite github-profile-picture">  </div>
+          <div class="mail-text-content">
+            <h3 class="user-name">GitHub Support</h3>
+            <p class="mail-header">Security alert</p>
+            <p class="mail-text"> sicherheitswarnung: jemand hat um 3 uhr nachts wieder cod...  </p>
+          </div>
+        </div>
+        </div>
+      
+        <div id="mail-side-popup" class="hidden">
+          <h3 class="mail-side-popup-header"></h3>
+          <p class="mail-side-popup-date"></p>
+          <p class="mail-side-popup-text"></p>
+        </div>
+        
       </div>
     </section>
 
@@ -154,13 +198,21 @@
     <!-- ═══════════════════════════════════════════════════════ -->
 
     <!-- Start Menu -->
+    
     <section id="start-menu" class="hidden">
       <div class="start-menu-background">
-        <div class="info-button-container">
-          <input type="image" class="system-buttons" id="info-button" src="https://i.imgur.com/pwCI2hE.png" />
-          <p class="actions-text">info</p>
+        
+        <div class="actions-button-container">
+          <input type="image" class="system-buttons" id="mailbox-button" src="https://i.imgur.com/VRxChEE.png" />
+          <p class="actions-text">mailbox</p>
         </div>
-        <div class="power-off-button-container">
+        
+        <div class="actions-button-container">
+          <input type="image" class="system-buttons" id="info-button" src="https://i.imgur.com/pwCI2hE.png" />
+          <p class="actions-text">system info</p>
+        </div>
+        
+        <div class="actions-button-container">
           <input type="image" class="system-buttons" id="power-off-button" src="https://i.imgur.com/JT3HEAa.png" />
           <p class="actions-text">herunterfahren</p>
         </div>
@@ -182,7 +234,7 @@
     </section>
 
   </section>
-
   <script src="script.js"></script>
+  <script src="events.js"></script>
 </body>
 </html>

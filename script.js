@@ -1,51 +1,67 @@
 document.addEventListener('DOMContentLoaded', function() {
   // ICONS
-  const powerOffIcon = document.getElementById("power-off-button")
-  const infoIcon = document.getElementById("info-button")
-  const envelopeIcon = document.getElementById("envelope")
-  const sleepModeIcon = document.querySelector(".sleep-mode-icon")
-  const trashCanIcon = document.querySelector(".trash-can-icon")
+const icons = {
+  powerOffIcon: document.getElementById("power-off-button"),
+  infoIcon: document.getElementById("info-button"),
+  mailboxIcon: document.getElementById("mailbox-button"),
+  envelopeIcon: document.getElementById("envelope"),
+  sleepModeIcon: document.querySelector(".sleep-mode-icon"),
+  trashCanIcon: document.querySelector(".trash-can-icon")
+}
 
-  // BUTTONS
-  const xButtonSD = document.getElementById("x-button-SD")
-  const xButtonIF = document.getElementById("x-button-IF")
-  const xButtonWM = document.getElementById("x-button-WM")
-  const noButton = document.getElementById("nein-button")
-  const yesButton = document.getElementById("ja-button")
+const buttons = {
+  xButtonSD: document.getElementById("x-button-SD"),
+  xButtonIF: document.getElementById("x-button-IF"),
+  xButtonWM: document.getElementById("x-button-WM"),
+  noButton: document.getElementById("nein-button"),
+  yesButton: document.getElementById("ja-button"),
+  likesButton: document.querySelector(".likes-exe-button"),
+  dislikesButton: document.querySelector(".dislikes-exe-button"),
+  okayButton: document.getElementById("okay-button"),
+  startButton: document.getElementById("start-button")
+}
 
-  const likesTab = document.querySelector(".likes-exe-button")
-  const dislikesTab = document.querySelector(".dislikes-exe-button")
-  const okayButton = document.getElementById("okay-button")
-  const startButton = document.getElementById("start-button")
+const messages = {
+  powerOffMessage: document.getElementById("shut-down-message"),
+  powerOffAnimation: document.getElementById("shutting-down-container"),
+  turningOnAnimation: document.getElementById("turning-on-container"),
+  statusOffImage: document.getElementById("off-image"),
+  infoMessage: document.getElementById("info-message"),
+  welcomeMessage: document.getElementById("welcome-message")
+}
 
-  // MESSAGES
-  const powerOffMessage = document.getElementById("shut-down-message")
-  const powerOffAnimation = document.getElementById("shutting-down-container")
-  const turningOnAnimation = document.getElementById("turning-on-container")
-  const statusOffImage = document.getElementById("off-image")
-  const infoMessage = document.getElementById("info-message")
-  const welcomeMessage = document.getElementById("welcome-message")
+const popups = {
+  aboutMePopup: document.getElementById("aboutme-popup"),
+  tabsPopup: document.getElementById("popup-container"),
+  startMenu: document.getElementById("start-menu"),
+  startMenuDiv: document.querySelector(".start-menu-background"),
+  mailboxPopup: document.getElementById("mailbox-container"),
+  mailContent: document.querySelectorAll(".mail-content"),
+  mailSidePopup: document.getElementById("mail-side-popup")
+}
 
-  // INPUTS 
-  const enterKey = document.getElementById("cursor")
+const text = {
+  popupList: document.querySelector(".popup-list"),
+  popupHeader: document.querySelector(".popup-header"),
 
-  // UI POPUPS 
-  const aboutMePopup = document.getElementById("aboutme-popup")
-  const tabsPopup = document.getElementById("popup-container")
-  const startMenu = document.getElementById("start-menu")
-  const startMenuDiv = document.querySelector(".start-menu-background")
+  messageText: document.querySelector(".message-text"),
+  messageHeader: document.querySelector(".message-header"),
 
-  // TEXT
-  const messageText = document.querySelector(".message-text")
-  const messageHeader = document.querySelector(".message-header") 
-  const popupList = document.querySelector(".popup-list")
-  const popupHeader = document.querySelector(".popup-header")
+  mailText: document.querySelector(".mail-side-popup-text"),
+  mailHeader: document.querySelector(".mail-side-popup-header"),
+  mailDate: document.querySelector(".mail-side-popup-date")
+}
 
+const mails = {
+  teacherMail: document.getElementById("teacher-mail"),
+  riotGamesMail: document.getElementById("riot-games-mail"),
+  githubSupportMail: document.getElementById("github-support-mail")
+}
   // ARRAYS 
   const closeButtonPairs = [
-    [xButtonSD, powerOffMessage],
-    [xButtonIF, infoMessage], 
-    [xButtonWM, welcomeMessage]
+    [buttons.xButtonSD, messages.powerOffMessage],
+    [buttons.xButtonIF, messages.infoMessage], 
+    [buttons.xButtonWM, messages.welcomeMessage]
   ]
 
   // FUNCTIONS
@@ -55,18 +71,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function disableAllPointerEvents() {
     document.body.style.pointerEvents = "none"
-    aboutMePopup.style.pointerEvents = "none"
+    popups.aboutMePopup.style.pointerEvents = "none"
   }
 
   function enableAllPointerEvents() {
-    aboutMePopup.style.pointerEvents = "auto"
+    popups.aboutMePopup.style.pointerEvents = "auto"
     document.body.style.pointerEvents = 'auto'
   }
 
   function permanentVisibility(element) {
     if (!element.classList.contains("visible")) {
       element.classList.add("visible")
-      element.style.pointerEvents = "auto"
       disableAllPointerEvents()
     } else {
       element.classList.remove('visible')
@@ -77,22 +92,13 @@ document.addEventListener('DOMContentLoaded', function() {
   function discardVisibility(element) {
     element.classList.remove("visible")
     element.classList.remove("show")
-
     enableAllPointerEvents()
   }
 
-  function resetVariables(...variables) {
-      for (const variable of variables) {
-        if (!variable.classList.contains("visible")) {
-          variable.innerHTML = " "
-        }
-      }
-    }
-
   function executeReboot() {
-    discardVisibility(statusOffImage)
-    discardVisibility(powerOffMessage)
-    toggleVisibility(turningOnAnimation)
+    discardVisibility(messages.statusOffImage)
+    discardVisibility(messages.powerOffMessage)
+    toggleVisibility(messages.turningOnAnimation)
     setTimeout(() => { 
       location.reload()
     }, 3000)
@@ -102,14 +108,14 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let [button, message] of pairs) {
       button.addEventListener("click", () => {
         discardVisibility(message)
-        aboutMePopup.style.pointerEvents = "auto"
+        popups.aboutMePopup.style.pointerEvents = "auto"
       })
     }
   }
 
-  function changeContent(message, error, paragraph, header) {
-    paragraph.innerHTML = message
-    header.innerHTML = error
+  function changeTextContent(headerText, listText, header, list) {
+    header.innerHTML = headerText
+    list.innerHTML = listText
   }
 
   function disableIcons(...buttons) {
@@ -132,90 +138,102 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function waitAfterLoad(element) {
     setTimeout(() => { 
-      toggleVisibility(element)
+      toggleVisibility(element);
     }, 500)
 }
 
   // LISTENERS 
-  envelopeIcon.addEventListener("click", () => {
+
+  waitAfterLoad(messages.welcomeMessage)
+
+  icons.envelopeIcon.addEventListener("click", () => {
     const aboutSectionPopup = document.querySelector("#aboutme-popup")
     toggleVisibility(aboutSectionPopup)
   })
 
-  likesTab.addEventListener("click", () => {
-    toggleVisibility(tabsPopup)
-    let text = `• valorant & rainbow six <br> • sonnenuntergänge <br> • kreativität freilaufen zu lassen <br> • ruhige lernatmosphäre <br> • natur als therapie <br> • schulische erfolgsmomente <br> • mir mühe zu geben`
-    let header = "likes.exe"
-    changeContent(text, header, popupList, popupHeader)
+  buttons.likesButton.addEventListener("click", () => {
+    toggleVisibility(popups.tabsPopup)
+    changeTextContent("likes.exe", `• valorant & rainbow six <br> • sonnenuntergänge <br> • kreativität freilaufen zu lassen <br> • ruhige lernatmosphäre <br> • natur als therapie <br> • schulische erfolgsmomente <br> • mir mühe zu geben`, text.popupHeader, text.popupList)
   })
 
-  dislikesTab.addEventListener("click", () => {
-    toggleVisibility(tabsPopup)
-    let text = `• zeitdruck <br> • regen <br> • zu spät aufzuwachen <br> • heißes wetter <br> • drama <br> • laute geräusche <br> • bugs beim programmieren `
-    let header = "dislikes.exe"
-    changeContent(text, header, popupList, popupHeader)
+  buttons.dislikesButton.addEventListener("click", () => {
+    toggleVisibility(popups.tabsPopup)
+    changeTextContent("dislikes.exe", `• zeitdruck <br> • regen <br> • zu spät aufzuwachen <br> • heißes wetter <br> • drama <br> • laute geräusche <br> • bugs beim programmieren `, text.popupHeader, text.popupList)
+  })
+  
+  buttons.startButton.addEventListener("click", () => {
+    toggleVisibility(popups.startMenu)
+    popups.startMenu.classList.toggle("show")
   })
 
-  startButton.addEventListener("click", () => {
-    toggleVisibility(startMenu)
-    startMenu.classList.toggle("show")
+  icons.powerOffIcon.addEventListener("click", () => {
+    permanentVisibility(messages.powerOffMessage)
+    disableIcons(buttons.okayButton)
+    enableIcons(buttons.yesButton, buttons.noButton)
+    changeTextContent("Achtung!", "Möchten Sie wirklich herunterfahren? :(", text.messageHeader, text.messageText)
   })
 
-  powerOffIcon.addEventListener("click", () => {
-    permanentVisibility(powerOffMessage)
-    disableIcons(okayButton)
-    enableIcons(yesButton, noButton)
-    let message = "Möchten Sie wirklich herunterfahren? :("
-    let error = "Achtung!"
-    changeContent(message, error, messageText, messageHeader)
-    console.log('it ran the function ')
-    resetVariables(message, error, messageText, messageHeader)
-    console.log('it ran resetvariables')
+  icons.sleepModeIcon.addEventListener("click", () => {
+    permanentVisibility(messages.powerOffMessage)
+    disableIcons(buttons.yesButton, buttons.noButton)
+    enableIcons(buttons.okayButton)
+    changeTextContent("Error!", "schlaf.exe nicht gefunden.", text.messageHeader, text.messageText)
   })
 
-  sleepModeIcon.addEventListener("click", () => {
-    permanentVisibility(powerOffMessage)
-    disableIcons(yesButton, noButton)
-    enableIcons(okayButton)
-
-    let message = "schlaf.exe nicht gefunden."
-    let error = "Error!"
-
-    changeContent(message, error, messageText, messageHeader)
+  icons.trashCanIcon.addEventListener("click", () => {
+    permanentVisibility(messages.powerOffMessage)
+    disableIcons(buttons.yesButton, buttons.noButton)
+    enableIcons(buttons.okayButton)
+    changeTextContent("Error!", "hey! du kannst nix löschen! das ist mein PC!!! >:(", text.messageHeader, text.messageText)
   })
 
-  trashCanIcon.addEventListener("click", () => {
-    permanentVisibility(powerOffMessage)
-    disableIcons(yesButton, noButton)
-    enableIcons(okayButton)
-    let message = "hey! du kannst nix löschen! das ist mein PC!!! >:("
-    let error = "Error!"
-    changeContent(message, error, messageText, messageHeader)
+  icons.infoIcon.addEventListener("click", () => {
+    permanentVisibility(messages.infoMessage)
   })
 
-  infoIcon.addEventListener("click", () => {
-    permanentVisibility(infoMessage)
+  icons.mailboxIcon.addEventListener("click", () => {
+    toggleVisibility(popups.mailboxPopup)
   })
 
   closingMessage(closeButtonPairs)
-  waitAfterLoad(welcomeMessage)
 
-  noButton.addEventListener("click", () => {
-    discardVisibility(powerOffMessage)
+  buttons.noButton.addEventListener("click", () => {
+    discardVisibility(messages.powerOffMessage)
   })
 
-  okayButton.addEventListener("click", () => {
-    discardVisibility(powerOffMessage)
+  buttons.okayButton.addEventListener("click", () => {
+    discardVisibility(messages.powerOffMessage)
   })
 
-  yesButton.addEventListener("click", () => {
-    toggleVisibility(powerOffAnimation)
+  buttons.yesButton.addEventListener("click", () => {
+    toggleVisibility(messages.powerOffAnimation)
     setTimeout(() => { 
-      discardVisibility(powerOffAnimation)
-      toggleVisibility(statusOffImage)
+      discardVisibility(messages.powerOffAnimation)
+      toggleVisibility(messages.statusOffImage)
     }, 4000)
   })
 
+  popups.mailContent.forEach(mailContent => {
+    mailContent.addEventListener("click", () => {
+      permanentVisibility(popups.mailSidePopup)
+    })
+  })
+
+  mails.teacherMail.addEventListener("click", () => {
+    changeTextContent("Re: Hausaufgaben", "hey, ich habe deine hausaufgaben mal durchgeschaut und mir ist dann was aufgefallen... dein text scheint wirklich perfekt zu sein. <br><br> hast du denn chatGPT genutzt??? bitte sei ehrlich mit mir. <br><br><br> viele grüße <br> herr müller", text.mailHeader, text.mailText)
+    changeTextContent("don 4/9/2025 11:06", "don 4/9/2025 11:06", text.mailDate, text.mailDate)
+  })
+
+  mails.riotGamesMail.addEventListener("click", () => {
+    changeTextContent("Zusage Interview", "hey! wir haben mal einen blick auf deinen lebenslauf geworfen und haben uns entschieden, dich bei einem praktikum zu begleiten. <br><br> wenn du das möchtest, dann sende uns eine antwort mit deinen personalinformationen. <br><br> vielen dank! <br><br>© 2025 Riot Games, Inc. All Rights Reserved.", text.mailHeader, text.mailText)
+    changeTextContent("mon 1/9/2025 17:34", "mon 1/9/2025 17:34", text.mailDate, text.mailDate)
+  })
+
+  mails.githubSupportMail.addEventListener("click", () => {
+    changeTextContent("Security alert", "sicherheitswarnung: jemand hat um 3 uhr nachts wieder code gepusht. <br><br> diese warnung bitte nicht ignorieren, denn es kann einen schlechten einfluss auf den user haben. <br><br> um dieses problem zu lösen, bitte kein koffein mehr trinken.<br><br> © 2025 GitHub, Inc.", text.mailHeader, text.mailText)
+    changeTextContent("fri 5/9/2025 09:11", "fri 5/9/2025 09:11", text.mailDate, text.mailDate)
+  })
+  
   document.addEventListener("keydown", (event) => {
     if (event.code == "Enter") {
       executeReboot(event)
@@ -223,10 +241,10 @@ document.addEventListener('DOMContentLoaded', function() {
   })
 
   // UPTIME IN INFO AND DATE/TIME IN TASKBAR
+  const months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
+  const days = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
+  
   function getTime() {
-    const months = ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"]
-    const days = ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
-
     let currentTime = new Date()
 
     let currentSeconds = currentTime.getSeconds().toString().padStart(2, "0")
